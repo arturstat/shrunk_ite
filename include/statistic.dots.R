@@ -1,0 +1,16 @@
+
+statistic.dots <- function(
+  func,
+  args,
+  stat,
+  dots
+) {
+  ret <- do.call(
+    what=stat,
+    args=list(
+      do.call(what=func, args=args),
+      unlist(dots)
+    )
+  );
+  return(ret);
+} # statistic.dots
