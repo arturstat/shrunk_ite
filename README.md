@@ -15,4 +15,4 @@ Creates a plot of the Mean Squared Error versus the estimated individual treatme
 
 Figure3.R
 
-Simulates series of n-of-1 trials with 1, 2, 4, 5, 10, 20, 100, 1000 subjects. A random intercepts model is assumed for the population of true indivudal treatment effects.
+Simulates series of n-of-1 trials with 1, 2, 3, 4, 5, 10, 20, 100, 1000 subjects. A random intercepts model is assumed for the population of true indivudal treatment effects.
