@@ -7,13 +7,16 @@
 # Remarks:
 #  None.
 
-tau <- 0;
-n <- 3;
-psi <- 2;
-sigma <- 1;
+tau <- 0; # population average of true individual treatment effect
+n <- 3; # number of cycles per subject
+psi <- 2; # variance of the true indivual treatment effect
+sigma <- 1; # residual variance
 
+# probability for the computations
+# of the x-axis limits of the plot
 prob <- 0.999;
 
+# weight for the shrunk estimate
 k <- n*psi/(n*psi+sigma);
 
 # shrunk
@@ -30,6 +33,7 @@ b <- qnorm(
   sd=sqrt(psi+sigma/n)
 );
 
+# compute x-axis limits
 xlim <- (a+b)/2;
 xlim[1] <- floor(xlim[1]);
 xlim[2] <- ceiling(xlim[2]);

@@ -36,9 +36,9 @@ rm(file);
 
 iseed <- 3141593; # seed for RNG
 
-tau <-0; # population average
-n <- 3; # number of observations per subject
-psi <- 2; # interactive variance
+tau <- 0; # population average of true individual treatment effect
+n <- 3; # number of cycles per subject
+psi <- 2; # variance of the true indivual treatment effect
 sigma <- 1; # residual variance
 
 # probability for the computations
@@ -48,6 +48,7 @@ prob <- 0.999;
 # colors for each line in the plot
 color <- rainbow(n=9);
 
+# weight for the shrunk estimate
 k <- n*psi/(n*psi+sigma);
 
 a <- qnorm(
