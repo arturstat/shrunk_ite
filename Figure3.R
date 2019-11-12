@@ -9,8 +9,19 @@
 
 library(parallel);
 
+files <- c(
+  "absoluteError.R", "boot.statistic.R", "bootR.R",
+  "checkArgs.boot.R", "checkArgs.randomIntercepts.R",
+  "checkObject.statistic.R", "dpill.R",
+  "estimateITE.lme.randomIntercepts.R", "lmeModel.R",
+  "lmeStatistic.R", "lmeStatistic.randomIntercepts.R",
+  "locpoly.R", "naive.R", "newFrame.R",
+  "randomIntercepts.R", "shrunk.R", "squareError.R",
+  "statistic.args.R", "statistic.dots.R"
+);
+
 # define working directory
-while ( !"shrunk_study.R" %in% list.files() ) {
+while ( !all( files %in% list.files(path="./include") ) ) {
   file <- file.choose();# choose this file
   WorkingDir  <- dirname(file);# get path to file
   setwd(dir=WorkingDir); # define working directory
@@ -24,7 +35,7 @@ while ( !"shrunk_study.R" %in% list.files() ) {
 #list.files();
 
 # get list of files to source
-files <- list.files(path="./include/");
+files <- list.files(path="./include");
 
 # source files
 for (file in files) {
