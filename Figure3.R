@@ -7,8 +7,6 @@
 # Remarks:
 #  Needs several hours to complete.
 
-library(parallel);
-
 files <- c(
   "absoluteError.R", "boot.statistic.R", "bootR.R",
   "checkArgs.boot.R", "checkArgs.randomIntercepts.R",
@@ -80,7 +78,10 @@ xlim[1] <- floor(xlim[1]);
 xlim[2] <- ceiling(xlim[2]);
 
 # create parallel cluster
-cl <- makeCluster(spec=detectCores(), type="PSOCK");
+cl <- parallel::makeCluster(
+  spec=parallel::detectCores(),
+  type="PSOCK"
+);
 
 # export list of files to cluster
 parallel::clusterExport(
@@ -111,7 +112,7 @@ rm(files);
 #############################
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot1 <- bootR(
@@ -129,7 +130,7 @@ system.time(
 ); # 1 subject per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot2 <- bootR(
@@ -147,7 +148,7 @@ system.time(
 ); # 2 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot3 <- bootR(
@@ -165,7 +166,7 @@ system.time(
 ); # 3 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot4 <- bootR(
@@ -183,7 +184,7 @@ system.time(
 ); # 4 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot5 <- bootR(
@@ -201,7 +202,7 @@ system.time(
 ); # 5 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot10 <- bootR(
@@ -219,7 +220,7 @@ system.time(
 ); # 10 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot20 <- bootR(
@@ -237,7 +238,7 @@ system.time(
 ); # 20 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot100 <- bootR(
@@ -255,7 +256,7 @@ system.time(
 ); # 100 subjects per series of n-of-1 trials
 
 # set seed on parallel cluster
-clusterSetRNGStream(cl=cl, iseed=iseed);
+parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
 
 system.time(
   boot1000 <- bootR(
@@ -272,7 +273,7 @@ system.time(
   )
 ); # 1000 subjects per series of n-of-1 trials
 
-stopCluster(cl=cl);
+parallel::stopCluster(cl=cl);
 
 ###############################
 ###### Compute bandwidth ######
