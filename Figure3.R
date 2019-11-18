@@ -423,36 +423,36 @@ system.time(
 ##########################
 
 tiff(
-  filename="MSE_vs_Estimate.tif",
+  filename="Figure3.tif",
   width=1920,
   height=1080,
   units="px",
-  pointsize=12,
+  pointsize=2,
   compression="lzw",
-  res=96,
+  res=400,
   bg="white",
   type="cairo"
 );
 
 #jpeg(
-#  filename="MSE_vs_Estimate.jpg",
+#  filename="Figure3.jpg",
 #  width=1920,
 #  height=1080,
 #  units="px",
-#  pointsize=12,
+#  pointsize=2,
 #  quality=100,
-#  res=96,
+#  res=400,
 #  bg="white",
 #  type="cairo"
 #);
 
 #png(
-#  filename="MSE_vs_Estimate.png",
+#  filename="Figure3.png",
 #  width=1920,
 #  height=1080,
 #  units="px",
-#  pointsize=12,
-#  res=96,
+#  pointsize=2,
+#  res=400,
 #  bg="white",
 #  type="cairo"
 #);
@@ -476,8 +476,8 @@ plot(
   ylab="",
   type="l",
   col=color[1],
-  lty="solid",
-  lwd=1,
+  lty=1,
+  lwd=0.75,
   bty="n",
   axes=FALSE
 ); # 1 subject per series of n-of-1 trials
@@ -490,8 +490,8 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.5,
-  lwd.ticks=1.5,
+  lwd=1.25,
+  lwd.ticks=1.25,
   cex.axis=2.5,
   mgp=c(-3, -1, -3)
 );
@@ -504,8 +504,8 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.5,
-  lwd.ticks=1.5,
+  lwd=1.25,
+  lwd.ticks=1.25,
   cex.axis=2.5,
   mgp=c(3, 1, 0)
 );
@@ -524,56 +524,56 @@ lines(
   fit2,
   col=color[2],
   lty=2,
-  lwd=1
+  lwd=0.75
 ); # 2 subjects per series of n-of-1 trials
 
 lines(
   fit3,
   col=color[3],
   lty=3,
-  lwd=1
+  lwd=0.75
 ); # 3 subjects per series of n-of-1 trials
 
 lines(
   fit4,
   col=color[4],
   lty=4,
-  lwd=1
+  lwd=0.75
 ); # 4 subjects per series of n-of-1 trials
 
 lines(
   fit5,
   col=color[5],
   lty=5,
-  lwd=1
+  lwd=0.75
 ); # 5 subjects per series of n-of-1 trials
 
 lines(
   fit10,
   col=color[6],
   lty=6,
-  lwd=1
+  lwd=0.75
 ); # 10 subjects per series of n-of-1 trials
 
 lines(
   fit20,
   col=color[7],
   lty=7,
-  lwd=1
+  lwd=0.75
 ); # 20 subjects per series of n-of-1 trials
 
 lines(
   fit100,
   col=color[8],
   lty=8,
-  lwd=1
+  lwd=0.75
 ); # 100 subjects per series of n-of-1 trials
 
 lines(
   fit1000,
   col=color[9],
   lty=9,
-  lwd=1
+  lwd=0.75
 ); # 1000 subjects per series of n-of-1 trials
 
 legend(
@@ -585,7 +585,7 @@ legend(
   ),
   col=color,
   lty=1:9,
-  lwd=1,
+  lwd=0.75,
   bty="n",
   cex=2.5,
   xjust=0,

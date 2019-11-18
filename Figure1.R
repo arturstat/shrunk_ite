@@ -43,36 +43,36 @@ mse.naive <- rep( x=sigma/n, times=length(x) );
 mse.shrunk <- (1-k)^2*(x-tau)^2+k^2*sigma/n;
 
 tiff(
-  filename="MSE_vs_Estimand_A.tif",
+  filename="Figure1.tif",
   width=1920,
   height=1080,
   units="px",
-  pointsize=12,
+  pointsize=2,
   compression="lzw",
-#  res=96,
+  res=400,
   bg="white",
   type="cairo"
 );
 
 #jpeg(
-#  filename="MSE_vs_Estimand_A.jpg",
+#  filename="Figure1.jpg",
 #  width=1920,
 #  height=1080,
 #  units="px",
-#  pointsize=12,
+#  pointsize=2,
 #  quality=100,
-#  res=96,
+#  res=400,
 #  bg="white",
 #  type="cairo"
 #);
 
 #png(
-#  filename="MSE_vs_Estimand_A.png",
+#  filename="Figure1.png",
 #  width=1920,
 #  height=1080,
 #  units="px",
-#  pointsize=12,
-#  res=96,
+#  pointsize=2,
+#  res=400,
 #  bg="white",
 #  type="cairo"
 #);
@@ -98,7 +98,7 @@ plot(
   type="l",
   col="black",
   lty=1,
-  lwd=1,
+  lwd=0.75,
   bty="n",
   axes=FALSE
 );
@@ -111,8 +111,8 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.5,
-  lwd.ticks=1.5,
+  lwd=1.25,
+  lwd.ticks=1.25,
   cex.axis=2.5,
   mgp=c(3, 1, -1)
 );
@@ -125,8 +125,8 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.5,
-  lwd.ticks=1.5,
+  lwd=1.25,
+  lwd.ticks=1.25,
   cex.axis=2.5,
   mgp=c(3, 1, 0)
 );
@@ -144,7 +144,7 @@ lines(
   y=mse.shrunk,
   col="black",
   lty=2,
-  lwd=1
+  lwd=0.75
 );
 
 legend(
@@ -158,7 +158,7 @@ legend(
     "black"
   ),
   lty=1:2,
-  lwd=1,
+  lwd=0.75,
   bty="n",
   cex=2.5,
   xjust=0,
