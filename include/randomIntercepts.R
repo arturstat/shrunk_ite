@@ -23,7 +23,7 @@
 
 randomIntercepts <- function(
   size, # Vector of number of measurements for each subject.
-  fixed, # Overall mean.
+  fixed, # Population mean.
   random, # list of 'psi', 'sigma'.
   model=list(), # list of ARIMA parameters.
   checkArgs=TRUE
