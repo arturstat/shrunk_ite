@@ -7,7 +7,7 @@
 # Parameters:
 # size        vector of number of measurements for each subject.
 #             elements are truncated to the nearest integer.
-# fixed			  overall mean.
+# fixed			  population mean.
 # random		  list of 'psi', 'sigma'.
 #             'psi' is the interactive variance.
 #             'sigma' is the residual variance.
