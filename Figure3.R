@@ -1,14 +1,17 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Create figure 3.
+#  Creates figure 3.
 #
 # Remarks:
 #  Needs several hours to complete.
 
 files <- c(
-  "absoluteError.R", "boot.statistic.R", "bootR.R",
+  "boot.statistic.R", "bootR.R",
   "checkArgs.boot.R", "checkArgs.randomIntercepts.R",
   "checkObject.statistic.R", "dpill.R",
   "estimateITE.lme.randomIntercepts.R", "lmeModel.R",
@@ -47,7 +50,7 @@ iseed <- 3141593; # seed for RNG
 
 tau <- 0; # population average of true individual treatment effect
 n <- 3; # number of cycles per subject
-psi <- 2; # variance of the true indivual treatment effect
+psi <- 2; # variance of the true individual treatment effect
 sigma <- 1; # residual variance
 
 # probability for the computations
@@ -79,15 +82,12 @@ xlim[2] <- ceiling(xlim[2]);
 
 # create parallel cluster
 cl <- parallel::makeCluster(
-  spec=parallel::detectCores(),
-  type="PSOCK"
+  spec=parallel::detectCores(), type="PSOCK"
 );
 
 # export list of files to cluster
 parallel::clusterExport(
-  cl=cl,
-  varlist=c("files"),
-  envir=environment()
+  cl=cl, varlist=c("files"), envir=environment()
 );
 
 # source files in cluster
@@ -280,57 +280,39 @@ parallel::stopCluster(cl=cl);
 ###############################
 
 system.time(
-  h1 <- dpill(
-    boot1
-  )
+  h1 <- dpill(boot1)
 ); # 1 subject per series of n-of-1 trials
 
 system.time(
-  h2 <- dpill(
-    boot2
-  )
+  h2 <- dpill(boot2)
 ); # 2 subjects per series of n-of-1 trials
 
 system.time(
-  h3 <- dpill(
-    boot3
-  )
+  h3 <- dpill(boot3)
 ); # 3 subjects per series of n-of-1 trials
 
 system.time(
-  h4 <- dpill(
-    boot4
-  )
+  h4 <- dpill(boot4)
 ); # 4 subjects per series of n-of-1 trials
 
 system.time(
-  h5 <- dpill(
-    boot5
-  )
+  h5 <- dpill(boot5)
 ); # 5 subjects per series of n-of-1 trials
 
 system.time(
-  h10 <- dpill(
-    boot10
-  )
+  h10 <- dpill(boot10)
 ); # 10 subjects per series of n-of-1 trials
 
 system.time(
-  h20 <- dpill(
-    boot20
-  )
+  h20 <- dpill(boot20)
 ); # 20 subjects per series of n-of-1 trials
 
 system.time(
-  h100 <- dpill(
-    boot100
-  )
+  h100 <- dpill(boot100)
 ); # 100 subjects per series of n-of-1 trials
 
 system.time(
-  h1000 <- dpill(
-    boot1000
-  )
+  h1000 <- dpill(boot1000)
 ); # 1000 subjects per series of n-of-1 trials
 
 #######################################
@@ -339,82 +321,55 @@ system.time(
 
 system.time(
   fit1 <- locpoly(
-    x=boot1,
-    bandwidth=h1,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot1, bandwidth=h1, range.x=xlim, truncate=TRUE
   )
 ); # 1 subject per series of n-of-1 trials
 
 system.time(
   fit2 <- locpoly(
-    x=boot2,
-    bandwidth=h2,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot2, bandwidth=h2, range.x=xlim, truncate=TRUE
   )
 ); # 2 subjects per series of n-of-1 trials
 
 system.time(
   fit3 <- locpoly(
-    x=boot3,
-    bandwidth=h3,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot3, bandwidth=h3, range.x=xlim, truncate=TRUE
   )
 ); # 3 subjects per series of n-of-1 trials
 
 system.time(
   fit4 <- locpoly(
-    x=boot4,
-    bandwidth=h4,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot4, bandwidth=h4, range.x=xlim, truncate=TRUE
   )
 ); # 4 subjects per series of n-of-1 trials
 
 system.time(
   fit5 <- locpoly(
-    x=boot5,
-    bandwidth=h5,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot5, bandwidth=h5, range.x=xlim, truncate=TRUE
   )
 ); # 5 subjects per series of n-of-1 trials
 
 system.time(
   fit10 <- locpoly(
-    x=boot10,
-    bandwidth=h10,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot10, bandwidth=h10, range.x=xlim, truncate=TRUE
   )
 ); # 10 subjects per series of n-of-1 trials
 
 system.time(
   fit20 <- locpoly(
-    x=boot20,
-    bandwidth=h20,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot20, bandwidth=h20, range.x=xlim, truncate=TRUE
   )
 ); # 20 subjects per series of n-of-1 trials
 
 system.time(
   fit100 <- locpoly(
-    x=boot100,
-    bandwidth=h100,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot100, bandwidth=h100, range.x=xlim, truncate=TRUE
   )
 ); # 100 subjects per series of n-of-1 trials
 
 system.time(
   fit1000 <- locpoly(
-    x=boot1000,
-    bandwidth=h1000,
-    range.x=xlim,
-    truncate=TRUE
+    x=boot1000, bandwidth=h1000, range.x=xlim, truncate=TRUE
   )
 ); # 1000 subjects per series of n-of-1 trials
 
@@ -433,29 +388,6 @@ tiff(
   bg="white",
   type="cairo"
 );
-
-#jpeg(
-#  filename="Figure3.jpg",
-#  width=1920,
-#  height=1080,
-#  units="px",
-#  pointsize=2,
-#  quality=100,
-#  res=400,
-#  bg="white",
-#  type="cairo"
-#);
-
-#png(
-#  filename="Figure3.png",
-#  width=1920,
-#  height=1080,
-#  units="px",
-#  pointsize=2,
-#  res=400,
-#  bg="white",
-#  type="cairo"
-#);
 
 old <- par();
 
@@ -521,59 +453,35 @@ title(
 );
 
 lines(
-  fit2,
-  col=color[2],
-  lty=2,
-  lwd=0.75
+  fit2, col=color[2], lty=2, lwd=0.75
 ); # 2 subjects per series of n-of-1 trials
 
 lines(
-  fit3,
-  col=color[3],
-  lty=3,
-  lwd=0.75
+  fit3, col=color[3], lty=3, lwd=0.75
 ); # 3 subjects per series of n-of-1 trials
 
 lines(
-  fit4,
-  col=color[4],
-  lty=4,
-  lwd=0.75
+  fit4, col=color[4], lty=4, lwd=0.75
 ); # 4 subjects per series of n-of-1 trials
 
 lines(
-  fit5,
-  col=color[5],
-  lty=5,
-  lwd=0.75
+  fit5, col=color[5], lty=5, lwd=0.75
 ); # 5 subjects per series of n-of-1 trials
 
 lines(
-  fit10,
-  col=color[6],
-  lty=6,
-  lwd=0.75
+  fit10, col=color[6], lty=6, lwd=0.75
 ); # 10 subjects per series of n-of-1 trials
 
 lines(
-  fit20,
-  col=color[7],
-  lty=7,
-  lwd=0.75
+  fit20, col=color[7], lty=7, lwd=0.75
 ); # 20 subjects per series of n-of-1 trials
 
 lines(
-  fit100,
-  col=color[8],
-  lty=8,
-  lwd=0.75
+  fit100, col=color[8], lty=8, lwd=0.75
 ); # 100 subjects per series of n-of-1 trials
 
 lines(
-  fit1000,
-  col=color[9],
-  lty=9,
-  lwd=0.75
+  fit1000, col=color[9], lty=9, lwd=0.75
 ); # 1000 subjects per series of n-of-1 trials
 
 legend(

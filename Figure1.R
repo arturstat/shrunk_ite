@@ -1,8 +1,11 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Create figure 1.
+#  Creates figure 1.
 #
 # Remarks:
 #  None.
