@@ -1,11 +1,16 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Define 'boot.statistic' class.
+#  Defines 'boot.statistic' class.
 #
 # Remarks:
 #  None.
+
+# R program C.1
 
 setClass(
   Class="boot.statistic",

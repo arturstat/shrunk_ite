@@ -1,12 +1,17 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Compute bandwidth for
+#  Computes bandwidth for
 # local polynomial regression.
 #
 # Remarks:
 #  None.
+
+# R program C.6
 
 invisible(
   setGeneric(

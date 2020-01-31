@@ -1,3 +1,7 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+
+# R program C.15
 
 invisible(
   setGeneric(

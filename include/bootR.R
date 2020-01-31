@@ -1,3 +1,6 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
@@ -35,6 +38,8 @@
 #
 # Remarks:
 #  None.
+
+# R program C.2
 
 bootR <- function(
   func, # function which simulates the data
@@ -84,7 +89,8 @@ bootR <- function(
       error=function(e) {e;}
     );
     if ( inherits(x=cl, what="error") ) { # if it does not work
-      cl <- parallel::makeCluster(spec=nnodes, type="PSOCK"); # create a "PSOCK" cluster
+      # create a "PSOCK" cluster
+      cl <- parallel::makeCluster(spec=nnodes, type="PSOCK");
     }
     rm(nnodes); # remove object
     parallel::clusterSetRNGStream(cl=cl, iseed=iseed); # set seed on parallel cluster

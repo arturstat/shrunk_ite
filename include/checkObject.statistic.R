@@ -1,13 +1,18 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Check if 'stat' function returns
+#  Checks if 'stat' function returns
 # an object with the required structure.
 #
 # Remarks:
 #  This function is required by
 # 'checkArgs.boot' function.
+
+# R program C.5
 
 checkObject.statistic <- function(
   func,
@@ -50,7 +55,8 @@ checkObject.statistic <- function(
       paste(
         "function '",
         deparse( substitute(func) ),
-        "' must return a list of matrices or data.frames with the same number of rows",
+        "' must return a list of matrices or data.frames
+        with the same number of rows",
         sep=""
       )
     );
@@ -59,7 +65,8 @@ checkObject.statistic <- function(
       paste(
         "function '",
         deparse( substitute(func) ),
-        "' must return a list of matrices or data.frames with the same number of columns",
+        "' must return a list of matrices or data.frames
+        with the same number of columns",
         sep=""
       )
     );
@@ -68,7 +75,8 @@ checkObject.statistic <- function(
       paste(
         "function '",
         deparse( substitute(func) ),
-        "' must return a list of matrices or data.frames with the same column names",
+        "' must return a list of matrices or data.frames
+        with the same column names",
         sep=""
       )
     );
@@ -77,7 +85,8 @@ checkObject.statistic <- function(
       paste(
         "function '",
         deparse( substitute(func) ),
-        "' must return a list of matrices or data.frames with unique column names",
+        "' must return a list of matrices or data.frames
+        with unique column names",
         sep=""
       )
     );
@@ -86,7 +95,8 @@ checkObject.statistic <- function(
       paste(
         "function '",
         deparse( substitute(func) ),
-        "' must return a list of matrices or data.frames with defined column names",
+        "' must return a list of matrices or data.frames
+        with defined column names",
         sep=""
       )
     );

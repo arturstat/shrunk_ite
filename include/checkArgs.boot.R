@@ -1,11 +1,16 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Check arguments to bootR function.
+#  Checks arguments to bootR function.
 #
 # Remarks:
 #  None.
+
+# R program C.3
 
 checkArgs.boot <- function(
   func,

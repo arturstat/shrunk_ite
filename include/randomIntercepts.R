@@ -1,3 +1,6 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
@@ -20,6 +23,8 @@
 #
 # Remarks:
 #  None.
+
+# R program C.14
 
 randomIntercepts <- function(
   size, # Vector of number of measurements for each subject.
@@ -92,8 +97,10 @@ randomIntercepts <- function(
   
   p <- length(model$ar); q <- length(model$ma);
   if (p==0 & q==0) correlation <- NULL
-  else if (p==1 & q==0) correlation <- nlme::corAR1(form=~cycle|subject) # cycle is the position variable
-  else correlation <- nlme::corARMA(form=~cycle|subject, p=p, q=q); # subject is the grouping variable
+  # cycle is the position variable
+  else if (p==1 & q==0) correlation <- nlme::corAR1(form=~cycle|subject)
+  # subject is the grouping variable
+  else correlation <- nlme::corARMA(form=~cycle|subject, p=p, q=q);
   rm(p, q);
   
   ret <- methods::new(

@@ -1,11 +1,16 @@
+# IDEAL project
+# http://www.ideal.rwth-aachen.de/
+#
 # Author:
 # Artur Araujo <artur.stat@gmail.com>
 #
 # Description:
-#  Define 'lmeStatistic.randomIntercepts' class.
+#  Defines 'lmeStatistic.randomIntercepts' class.
 #
 # Remarks:
 #  None.
+
+# R program C.10
 
 setClass(
   Class="lmeStatistic.randomIntercepts",
