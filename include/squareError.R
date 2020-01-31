@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.16
-
 squareError <- function(
   true, # the estimand
   estimate # the estimate

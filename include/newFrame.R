@@ -19,8 +19,6 @@
 # Remarks:
 #  For internal use.
 
-# R program C.13
-
 newFrame <- function(
   modes,
   nrow,

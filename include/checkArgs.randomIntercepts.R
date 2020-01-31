@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.4
-
 checkArgs.randomIntercepts <- function(
   size,
   fixed,

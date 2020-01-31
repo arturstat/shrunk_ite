@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.8
-
 # lmList class
 setOldClass(
   Classes=c(

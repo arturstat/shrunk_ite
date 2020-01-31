@@ -11,8 +11,6 @@
 # Remarks:
 #  None.
 
-# R program C.7
-
 estimateITE.lme.randomIntercepts <- function(
   object
 ) {

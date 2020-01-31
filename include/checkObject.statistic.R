@@ -12,8 +12,6 @@
 #  This function is required by
 # 'checkArgs.boot' function.
 
-# R program C.5
-
 checkObject.statistic <- function(
   func,
   args

@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.1
-
 setClass(
   Class="boot.statistic",
   slots=c(

@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.17
-
 statistic.args <- function(
   func,
   args,

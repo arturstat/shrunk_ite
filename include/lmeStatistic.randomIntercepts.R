@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.10
-
 setClass(
   Class="lmeStatistic.randomIntercepts",
   contains="lmeStatistic"

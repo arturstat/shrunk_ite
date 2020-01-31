@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.18
-
 statistic.dots <- function(
   func,
   args,

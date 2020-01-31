@@ -11,8 +11,6 @@
 # Remarks:
 #  None.
 
-# R program C.6
-
 invisible(
   setGeneric(
     name="dpill",

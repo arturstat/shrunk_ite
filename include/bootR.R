@@ -39,8 +39,6 @@
 # Remarks:
 #  None.
 
-# R program C.2
-
 bootR <- function(
   func, # function which simulates the data
   args, # list of arguments to 'func'

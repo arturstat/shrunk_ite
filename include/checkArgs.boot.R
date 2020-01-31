@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.3
-
 checkArgs.boot <- function(
   func,
   args,

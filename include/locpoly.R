@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.11
-
 invisible(
   setGeneric(
     name="locpoly",

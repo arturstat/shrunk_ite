@@ -10,8 +10,6 @@
 # Remarks:
 #  None.
 
-# R program C.9
-
 setClassUnion(
   name="lmeStatistic.parameter",
   members=c(

@@ -24,8 +24,6 @@
 # Remarks:
 #  None.
 
-# R program C.14
-
 randomIntercepts <- function(
   size, # Vector of number of measurements for each subject.
   fixed, # Population mean.
