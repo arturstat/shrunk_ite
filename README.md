@@ -1,6 +1,9 @@
 # shrunk_ite
 Data simulation from: Shrunk versus naive individual treatment effects in series of n-of-1 trials
 
+## Funding
+This work was supported by the European Union’s FP7 programme [grant number 602552] for the IDEAL project.
+
 ## include/.
 
 The files required to perform the simulation are placed inside this folder.
