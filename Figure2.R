@@ -29,7 +29,7 @@ a <- qnorm(
   sd=sqrt(k^2*(psi+sigma/n))
 );
 
-#naive
+# naive
 b <- qnorm(
   p=(1+c(-1, 1)*prob)/2,
   mean=tau,
@@ -91,6 +91,7 @@ par(
   )
 );
 
+# plot MSE naive
 plot(
   x=x,
   y=mse.naive,
@@ -142,6 +143,7 @@ title(
   cex.lab=3
 );
 
+# plot MSE shrunk
 lines(
   x=x,
   y=mse.shrunk,

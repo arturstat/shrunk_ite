@@ -29,7 +29,7 @@ a <- qnorm(
   sd=sqrt(k^2*(psi+sigma/n))
 );
 
-#naive
+# naive
 b <- qnorm(
   p=(1+c(-1, 1)*prob)/2,
   mean=tau,
@@ -41,9 +41,14 @@ xlim <- (a+b)/2;
 xlim[1] <- floor(xlim[1]);
 xlim[2] <- ceiling(xlim[2]);
 
+# second y-axis limits
+density.at <- pretty( x=c( 0, 1/sqrt(2*pi*psi) ) );
+density.ylim <- range(density.at);
+
 x <- seq(from=xlim[1], to=xlim[2], by=0.01);
 mse.naive <- rep( x=sigma/n, times=length(x) );
 mse.shrunk <- (1-k)^2*(x-tau)^2+k^2*sigma/n;
+density.x <- dnorm( x=x, mean=tau, sd=sqrt(psi) );
 
 tiff(
   filename="Figure1.tif",
@@ -87,10 +92,11 @@ par(
     7.1, # bottom margin default 5.1
     9.1, # left margin default 4.1
     4.1, # top margin default 4.1
-    2.1 # right margin default 2.1
+    9.1 # right margin default 2.1
   )
 );
 
+# plot MSE naive
 plot(
   x=x,
   y=mse.naive,
@@ -142,6 +148,7 @@ title(
   cex.lab=3
 );
 
+# plot MSE shrunk
 lines(
   x=x,
   y=mse.shrunk,
@@ -168,6 +175,52 @@ legend(
   yjust=0,
   ncol=1,
   horiz=FALSE
+);
+
+# allow second plot
+par(new=TRUE);
+
+# plot density
+plot(
+  x=x,
+  y=density.x,
+  xlim=xlim,
+  ylim=density.ylim,
+  xlab="",
+  ylab="",
+  type="l",
+  col="red",
+  lty=1,
+  lwd=0.75,
+  bty="n",
+  axes=FALSE
+);
+
+# define second y-axis
+axis(
+  side=4,
+  at=density.at,
+  labels=TRUE,
+  tick=TRUE,
+  outer=FALSE,
+  lty="solid",
+  lwd=1.25,
+  lwd.ticks=1.25,
+  col="red",
+  col.ticks="red",
+  col.axis="red",
+  cex.axis=2.5,
+  mgp=c(3, 2, 0)
+);
+
+# define second y-axis label
+mtext(
+  text="Probability density",
+  side=4,
+  line=6,
+  outer=FALSE,
+  cex=3,
+  col="red"
 );
 
 par(old);
