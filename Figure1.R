@@ -96,7 +96,7 @@ par(
   )
 );
 
-# plot MSE naive
+# plot naive MSE
 plot(
   x=x,
   y=mse.naive,
@@ -110,6 +110,15 @@ plot(
   lwd=0.75,
   bty="n",
   axes=FALSE
+);
+
+# plot shrunk MSE
+lines(
+  x=x,
+  y=mse.shrunk,
+  col="black",
+  lty=2,
+  lwd=0.75
 );
 
 # define x-axis
@@ -148,15 +157,6 @@ title(
   cex.lab=3
 );
 
-# plot MSE shrunk
-lines(
-  x=x,
-  y=mse.shrunk,
-  col="black",
-  lty=2,
-  lwd=0.75
-);
-
 legend(
   x="top",
   legend=c(
@@ -180,7 +180,7 @@ legend(
 # allow second plot
 par(new=TRUE);
 
-# plot density
+# plot parameter density
 plot(
   x=x,
   y=density.x,

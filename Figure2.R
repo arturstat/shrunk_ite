@@ -21,19 +21,21 @@ prob <- 0.999;
 
 # weight for the shrunk estimate
 k <- n*psi/(n*psi+sigma);
+var.naive <- psi+sigma/n;
+var.shrunk <- k^2*(psi+sigma/n);
 
 # shrunk
 a <- qnorm(
   p=(1+c(-1, 1)*prob)/2,
   mean=tau,
-  sd=sqrt(k^2*(psi+sigma/n))
+  sd=sqrt(var.shrunk)
 );
 
 # naive
 b <- qnorm(
   p=(1+c(-1, 1)*prob)/2,
   mean=tau,
-  sd=sqrt(psi+sigma/n)
+  sd=sqrt(var.naive)
 );
 
 # compute x-axis limits
@@ -41,9 +43,15 @@ xlim <- (a+b)/2;
 xlim[1] <- floor(xlim[1]);
 xlim[2] <- ceiling(xlim[2]);
 
+# second y-axis limits
+density.at <- pretty( x=c( 0, 1/sqrt(2*pi*var.shrunk) ) );
+density.ylim <- range(density.at);
+
 x <- seq(from=xlim[1], to=xlim[2], by=0.01);
 mse.naive <- (1-k)^2*(tau-x)^2+k*sigma/n;
 mse.shrunk <- rep( x=k*sigma/n, times=length(x) );
+density.naive <- dnorm( x=x, mean=tau, sd=sqrt(var.naive) );
+density.shrunk <- dnorm( x=x, mean=tau, sd=sqrt(var.shrunk) );
 
 tiff(
   filename="Figure2.tif",
@@ -87,11 +95,11 @@ par(
     7.1, # bottom margin default 5.1
     9.1, # left margin default 4.1
     4.1, # top margin default 4.1
-    2.1 # right margin default 2.1
+    9.1 # right margin default 2.1
   )
 );
 
-# plot MSE naive
+# plot naive MSE
 plot(
   x=x,
   y=mse.naive,
@@ -105,6 +113,15 @@ plot(
   lwd=0.75,
   bty="n",
   axes=FALSE
+);
+
+# plot shrunk MSE
+lines(
+  x=x,
+  y=mse.shrunk,
+  col="black",
+  lty=2,
+  lwd=0.75
 );
 
 # define x-axis
@@ -143,15 +160,6 @@ title(
   cex.lab=3
 );
 
-# plot MSE shrunk
-lines(
-  x=x,
-  y=mse.shrunk,
-  col="black",
-  lty=2,
-  lwd=0.75
-);
-
 legend(
   x="top",
   legend=c(
@@ -171,6 +179,81 @@ legend(
   ncol=1,
   horiz=FALSE
 );
+
+# allow second plot
+par(new=TRUE);
+
+# plot naive density
+plot(
+  x=x,
+  y=density.naive,
+  xlim=xlim,
+  ylim=density.ylim,
+  xlab="",
+  ylab="",
+  type="l",
+  col="red",
+  lty=1,
+  lwd=0.75,
+  bty="n",
+  axes=FALSE
+);
+
+# plot shrunk density
+lines(
+  x=x,
+  y=density.shrunk,
+  col="red",
+  lty=2,
+  lwd=0.75
+);
+
+# define second y-axis
+axis(
+  side=4,
+  at=density.at,
+  labels=TRUE,
+  tick=TRUE,
+  outer=FALSE,
+  lty="solid",
+  lwd=1.25,
+  lwd.ticks=1.25,
+  col="red",
+  col.ticks="red",
+  col.axis="red",
+  cex.axis=2.5,
+  mgp=c(3, 2, 0)
+);
+
+# define second y-axis label
+mtext(
+  text="Probability density",
+  side=4,
+  line=6,
+  outer=FALSE,
+  cex=3,
+  col="red"
+);
+
+#legend(
+#  x="bottom",
+#  legend=c(
+#    "naive",
+#    "shrunk"
+#  ),
+#  col=c(
+#    "red",
+#    "red"
+#  ),
+#  lty=1:2,
+#  lwd=0.75,
+#  bty="n",
+#  cex=2.5,
+#  xjust=0,
+#  yjust=0,
+#  ncol=1,
+#  horiz=FALSE
+#);
 
 par(old);
 
