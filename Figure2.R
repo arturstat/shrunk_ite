@@ -160,26 +160,6 @@ title(
   cex.lab=3
 );
 
-legend(
-  x="top",
-  legend=c(
-    "naive",
-    "shrunk"
-  ),
-  col=c(
-    "black",
-    "black"
-  ),
-  lty=1:2,
-  lwd=0.75,
-  bty="n",
-  cex=2.5,
-  xjust=0,
-  yjust=0,
-  ncol=1,
-  horiz=FALSE
-);
-
 # allow second plot
 par(new=TRUE);
 
@@ -235,25 +215,40 @@ mtext(
   col="red"
 );
 
-#legend(
-#  x="bottom",
-#  legend=c(
-#    "naive",
-#    "shrunk"
-#  ),
-#  col=c(
-#    "red",
-#    "red"
-#  ),
-#  lty=1:2,
-#  lwd=0.75,
-#  bty="n",
-#  cex=2.5,
-#  xjust=0,
-#  yjust=0,
-#  ncol=1,
-#  horiz=FALSE
-#);
+legend.y <- (
+  density.at[length(density.at)]+
+    density.at[length(density.at)-1]
+)/2;
+
+legend(
+  x=tau,
+  y=legend.y,
+  legend=c("naive", "shrunk"),
+  col=c("black", "black"),
+  lty=1:2,
+  lwd=0.75,
+  bty="n",
+  cex=2.5,
+  xjust=0,
+  yjust=0,
+  ncol=1,
+  horiz=FALSE
+);
+
+legend(
+  x=tau-0.5,
+  y=legend.y,
+  legend=c("", ""),
+  col=c("red", "red"),
+  lty=1:2,
+  lwd=0.75,
+  bty="n",
+  cex=2.5,
+  xjust=0,
+  yjust=0,
+  ncol=1,
+  horiz=FALSE
+);
 
 par(old);
 
