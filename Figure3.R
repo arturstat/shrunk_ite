@@ -10,6 +10,23 @@
 # Remarks:
 #  Needs several hours to complete.
 
+iseed <- 3141593; # seed for RNG
+
+tau <- 0; # population average of true individual treatment effect
+n <- 3; # number of cycles per subject
+psi <- 2; # variance of the true individual treatment effect
+sigma <- 1; # residual variance
+
+# probability for the computations
+# of the x-axis limits of the plot
+prob <- 0.999;
+
+# colors for each line in the plot
+color <- rainbow(n=9);
+
+# weight for the shrunk estimate
+k <- psi/(psi+sigma/n);
+
 files <- c(
   "boot.statistic.R", "bootR.R",
   "checkArgs.boot.R", "checkArgs.randomIntercepts.R",
@@ -45,23 +62,6 @@ for (file in files) {
   );
 }
 rm(file);
-
-iseed <- 3141593; # seed for RNG
-
-tau <- 0; # population average of true individual treatment effect
-n <- 3; # number of cycles per subject
-psi <- 2; # variance of the true individual treatment effect
-sigma <- 1; # residual variance
-
-# probability for the computations
-# of the x-axis limits of the plot
-prob <- 0.999;
-
-# colors for each line in the plot
-color <- rainbow(n=9);
-
-# weight for the shrunk estimate
-k <- n*psi/(n*psi+sigma);
 
 a <- qnorm(
   p=(1+c(-1, 1)*prob)/2,
@@ -499,7 +499,10 @@ legend(
   xjust=0,
   yjust=0,
   ncol=1,
-  horiz=FALSE
+  horiz=FALSE,
+  title="number of n-of-1 trials",
+  title.col="black",
+  title.adj=6
 );
 
 par(old);
