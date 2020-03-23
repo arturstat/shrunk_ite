@@ -12,6 +12,8 @@
 
 iseed <- 3141593; # seed for RNG
 
+nsim <- 1.6e7; # number of simulations
+
 tau <- 0; # population average of true individual treatment effect
 n <- 3; # number of cycles per subject
 psi <- 2; # variance of the true individual treatment effect
@@ -124,7 +126,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=naive, # statistic function
-    nsim=1e5, # number of simulations
+    nsim=ceiling( nsim/( 10*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 1 subject per series of n-of-1 trials
@@ -142,7 +144,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=5e5, # number of simulations
+    nsim=ceiling( nsim/( 2*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 2 subjects per series of n-of-1 trials
@@ -160,7 +162,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=333333, # number of simulations
+    nsim=ceiling( nsim/( 3*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 3 subjects per series of n-of-1 trials
@@ -178,7 +180,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=2.5e5, # number of simulations
+    nsim=ceiling( nsim/( 4*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 4 subjects per series of n-of-1 trials
@@ -196,7 +198,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=2e5, # number of simulations
+    nsim=ceiling( nsim/( 5*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 5 subjects per series of n-of-1 trials
@@ -214,7 +216,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=1e5, # number of simulations
+    nsim=ceiling( nsim/( 10*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 10 subjects per series of n-of-1 trials
@@ -232,7 +234,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=5e4, # number of simulations
+    nsim=ceiling( nsim/( 20*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 20 subjects per series of n-of-1 trials
@@ -250,7 +252,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=1e4, # number of simulations
+    nsim=ceiling( nsim/( 100*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 100 subjects per series of n-of-1 trials
@@ -268,7 +270,7 @@ system.time(
       model=list()
     ), # list of arguments to simulation function
     stat=shrunk, # statistic function
-    nsim=1e3, # number of simulations
+    nsim=ceiling( nsim/( 1000*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
 ); # 1000 subjects per series of n-of-1 trials
