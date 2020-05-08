@@ -17,8 +17,9 @@ nsim <- 1e6; # number of simulations
 tau <- 0; # population average of true individual treatment effect
 n <- 3; # number of cycles per subject
 sigma <- 1; # residual variance
+w <- c(0.5, 0.6, 0.75, 0.85, 0.9, 0.95, 0.99); # weights
 # variance of the true individual treatment effect
-psi <- c(sigma/n, 0.5, 1, 2, 4, 10, 100);
+psi <- w/(1-w)*sigma/n;
 # number of n-of-1 trials
 s <- c(2:8, 10, 14, 20, 30, 40, 50, 70, 100, 300, 1000);
 
@@ -174,9 +175,9 @@ par(
 
 plot(
   x=log10(sim.data[[1]]$loss.data$s),
-  y=sim.data[[1]]$loss.data$mse,
+  y=sim.data[[1]]$loss.data$mse*n/sigma,
   xlim=range( log10(s) ),
-  ylim=c(0, 0.5),
+  ylim=c(0.4, 1.25),
   xlab="",
   ylab="",
   type="p",
@@ -204,7 +205,7 @@ axis(
 # define y-axis
 axis(
   side=2,
-  at=seq(from=0, to=0.5, by=0.1),
+  at=seq(from=0.4, to=1.2, by=0.2),
   labels=TRUE,
   tick=TRUE,
   outer=FALSE,
@@ -217,10 +218,8 @@ axis(
 
 # define xy-axis label
 title(
-  xlab="number of n-of-1 trials",
-  ylab=expression(
-    paste("MSE[", hat(theta), "]")
-  ),
+  xlab="number of subjects",
+  ylab="relative efficiency",
   line=5,
   cex.lab=3
 );
@@ -228,7 +227,7 @@ title(
 for ( i in 2:length(sim.data) ) {
   points(
     x=log10(sim.data[[i]]$loss.data$s),
-    y=sim.data[[i]]$loss.data$mse,
+    y=sim.data[[i]]$loss.data$mse*n/sigma,
     type="p",
     pch=pch[i],
     col=col[i],
@@ -236,9 +235,9 @@ for ( i in 2:length(sim.data) ) {
   );
 }
 
-# plot naive MSE line
+# plot equality line
 abline(
-  h=sigma/n,
+  h=1,
   lty=2,
   lwd=0.5
 );
@@ -263,6 +262,32 @@ legend(
   title.adj=0.75
 );
 
+#mtext(
+#  text=paste("n=", n, sep=""),
+#  side=3,
+#  line=0,
+#  outer=FALSE,
+#  cex=3
+#);
+
+text(
+  x=log10(2.75),
+  y=0.5,
+  labels="favors shrunk",
+  cex=2.5,
+  col="black"
+);
+
+text(
+  x=log10(2.75),
+  y=1.15,
+  labels="favors naive",
+  cex=2.5,
+  col="black"
+);
+
 par(old);
 
 dev.off();
+
+save.image(file="./Figure4.RData");

@@ -502,11 +502,13 @@ legend(
   yjust=0,
   ncol=1,
   horiz=FALSE,
-  title="number of n-of-1 trials",
+  title="number of subjects",
   title.col="black",
-  title.adj=6
+  title.adj=4.5
 );
 
 par(old);
 
 dev.off();
+
+save.image(file="./Figure3.RData");
