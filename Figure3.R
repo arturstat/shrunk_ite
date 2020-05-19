@@ -15,7 +15,7 @@ iseed <- 3141593; # seed for RNG
 nsim <- 1.6e7; # number of simulations
 
 tau <- 0; # population average of true individual treatment effect
-n <- 3; # number of cycles per subject
+n <- 3; # number of crossovers per subject
 psi <- 2; # variance of the true individual treatment effect
 sigma <- 1; # residual variance
 
@@ -381,12 +381,12 @@ system.time(
 
 tiff(
   filename="Figure3.tif",
-  width=1920,
-  height=1080,
+  width=3840,
+  height=2160,
   units="px",
   pointsize=2,
   compression="lzw",
-  res=400,
+  res=800,
   bg="white",
   type="cairo"
 );
@@ -397,8 +397,8 @@ par(
   mar=c(
     7.1, # bottom margin default 5.1
     9.1, # left margin default 4.1
-    4.1, # top margin default 4.1
-    2.1 # right margin default 2.1
+    2.1, # top margin default 4.1
+    1.1 # right margin default 2.1
   )
 );
 
@@ -411,7 +411,7 @@ plot(
   type="l",
   col=color[1],
   lty=1,
-  lwd=0.75,
+  lwd=0.5,
   bty="n",
   axes=FALSE
 ); # 1 subject per series of n-of-1 trials
@@ -424,10 +424,10 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.25,
-  lwd.ticks=1.25,
-  cex.axis=2.5,
-  mgp=c(-3, -1, -3)
+  lwd=1.5,
+  lwd.ticks=1.5,
+  cex.axis=3,
+  mgp=c(-3, 2, -1)
 );
 
 # define y-axis
@@ -438,10 +438,10 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.25,
-  lwd.ticks=1.25,
-  cex.axis=2.5,
-  mgp=c(3, 1, 0)
+  lwd=1.5,
+  lwd.ticks=1.5,
+  cex.axis=3,
+  mgp=c(3, 2, 0)
 );
 
 # define xy-axis label
@@ -455,35 +455,35 @@ title(
 );
 
 lines(
-  fit2, col=color[2], lty=2, lwd=0.75
+  fit2, col=color[2], lty=2, lwd=0.5
 ); # 2 subjects per series of n-of-1 trials
 
 lines(
-  fit3, col=color[3], lty=3, lwd=0.75
+  fit3, col=color[3], lty=3, lwd=0.5
 ); # 3 subjects per series of n-of-1 trials
 
 lines(
-  fit4, col=color[4], lty=4, lwd=0.75
+  fit4, col=color[4], lty=4, lwd=0.5
 ); # 4 subjects per series of n-of-1 trials
 
 lines(
-  fit5, col=color[5], lty=5, lwd=0.75
+  fit5, col=color[5], lty=5, lwd=0.5
 ); # 5 subjects per series of n-of-1 trials
 
 lines(
-  fit10, col=color[6], lty=6, lwd=0.75
+  fit10, col=color[6], lty=6, lwd=0.5
 ); # 10 subjects per series of n-of-1 trials
 
 lines(
-  fit20, col=color[7], lty=7, lwd=0.75
+  fit20, col=color[7], lty=7, lwd=0.5
 ); # 20 subjects per series of n-of-1 trials
 
 lines(
-  fit100, col=color[8], lty=8, lwd=0.75
+  fit100, col=color[8], lty=8, lwd=0.5
 ); # 100 subjects per series of n-of-1 trials
 
 lines(
-  fit1000, col=color[9], lty=9, lwd=0.75
+  fit1000, col=color[9], lty=9, lwd=0.5
 ); # 1000 subjects per series of n-of-1 trials
 
 legend(
@@ -495,9 +495,9 @@ legend(
   ),
   col=color,
   lty=1:9,
-  lwd=0.75,
+  lwd=0.5,
   bty="n",
-  cex=2.5,
+  cex=3,
   xjust=0,
   yjust=0,
   ncol=1,

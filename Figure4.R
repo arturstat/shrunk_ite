@@ -15,7 +15,7 @@ iseed <- 3141593; # seed for RNG
 nsim <- 1e6; # number of simulations
 
 tau <- 0; # population average of true individual treatment effect
-n <- 3; # number of cycles per subject
+n <- 3; # number of crossovers per subject
 sigma <- 1; # residual variance
 w <- c(0.5, 0.6, 0.75, 0.85, 0.9, 0.95, 0.99); # weights
 # variance of the true individual treatment effect
@@ -152,12 +152,12 @@ col <- c(
 
 tiff(
   filename="Figure4.tif",
-  width=1920,
-  height=1080,
+  width=3840,
+  height=2160,
   units="px",
   pointsize=2,
   compression="lzw",
-  res=400,
+  res=800,
   bg="white",
   type="cairo"
 );
@@ -166,10 +166,10 @@ old <- par();
 
 par(
   mar=c(
-    7.1, # bottom margin default 5.1
+    8.1, # bottom margin default 5.1
     9.1, # left margin default 4.1
-    4.1, # top margin default 4.1
-    2.1 # right margin default 2.1
+    2.1, # top margin default 4.1
+    1.1 # right margin default 2.1
   )
 );
 
@@ -183,7 +183,7 @@ plot(
   type="p",
   pch=pch[1],
   col=col[1],
-  cex=1.5,
+  cex=2,
   bty="n",
   axes=FALSE
 );
@@ -196,10 +196,10 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.25,
-  lwd.ticks=1.25,
-  cex.axis=2,
-  mgp=c(-3, -1, -3)
+  lwd=1.5,
+  lwd.ticks=1.5,
+  cex.axis=2.25,
+  mgp=c(-3, 2, -1)
 );
 
 # define y-axis
@@ -210,17 +210,17 @@ axis(
   tick=TRUE,
   outer=FALSE,
   lty="solid",
-  lwd=1.25,
-  lwd.ticks=1.25,
-  cex.axis=2.5,
-  mgp=c(3, 1, 0)
+  lwd=1.5,
+  lwd.ticks=1.5,
+  cex.axis=2.25,
+  mgp=c(3, 2, 0)
 );
 
 # define xy-axis label
 title(
   xlab="number of subjects",
   ylab="relative efficiency",
-  line=5,
+  line=6,
   cex.lab=3
 );
 
@@ -231,7 +231,7 @@ for ( i in 2:length(sim.data) ) {
     type="p",
     pch=pch[i],
     col=col[i],
-    cex=1.5
+    cex=2
   );
 }
 
@@ -252,7 +252,7 @@ legend(
   pch=pch,
   bty="n",
   cex=2.5,
-  pt.cex=1.5,
+  pt.cex=2,
   xjust=0,
   yjust=0,
   ncol=1,
@@ -267,7 +267,7 @@ legend(
 #  side=3,
 #  line=0,
 #  outer=FALSE,
-#  cex=3
+#  cex=2
 #);
 
 text(
