@@ -129,7 +129,7 @@ system.time(
     nsim=ceiling( nsim/( 10*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 1 subject per series of n-of-1 trials
+); # 1 subject per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -147,7 +147,7 @@ system.time(
     nsim=ceiling( nsim/( 2*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 2 subjects per series of n-of-1 trials
+); # 2 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -165,7 +165,7 @@ system.time(
     nsim=ceiling( nsim/( 3*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 3 subjects per series of n-of-1 trials
+); # 3 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -183,7 +183,7 @@ system.time(
     nsim=ceiling( nsim/( 4*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 4 subjects per series of n-of-1 trials
+); # 4 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -201,7 +201,7 @@ system.time(
     nsim=ceiling( nsim/( 5*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 5 subjects per series of n-of-1 trials
+); # 5 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -219,7 +219,7 @@ system.time(
     nsim=ceiling( nsim/( 10*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 10 subjects per series of n-of-1 trials
+); # 10 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -237,7 +237,7 @@ system.time(
     nsim=ceiling( nsim/( 20*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 20 subjects per series of n-of-1 trials
+); # 20 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -255,7 +255,7 @@ system.time(
     nsim=ceiling( nsim/( 100*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 100 subjects per series of n-of-1 trials
+); # 100 subjects per aggregated n-of-1 trials
 
 # set seed on parallel cluster
 parallel::clusterSetRNGStream(cl=cl, iseed=iseed);
@@ -273,7 +273,7 @@ system.time(
     nsim=ceiling( nsim/( 1000*length(cl) ) ), # number of simulations
     cl=cl # parallel cluster
   )
-); # 1000 subjects per series of n-of-1 trials
+); # 1000 subjects per aggregated n-of-1 trials
 
 parallel::stopCluster(cl=cl);
 
@@ -283,39 +283,39 @@ parallel::stopCluster(cl=cl);
 
 system.time(
   h1 <- dpill(boot1)
-); # 1 subject per series of n-of-1 trials
+); # 1 subject per aggregated n-of-1 trials
 
 system.time(
   h2 <- dpill(boot2)
-); # 2 subjects per series of n-of-1 trials
+); # 2 subjects per aggregated n-of-1 trials
 
 system.time(
   h3 <- dpill(boot3)
-); # 3 subjects per series of n-of-1 trials
+); # 3 subjects per aggregated n-of-1 trials
 
 system.time(
   h4 <- dpill(boot4)
-); # 4 subjects per series of n-of-1 trials
+); # 4 subjects per aggregated n-of-1 trials
 
 system.time(
   h5 <- dpill(boot5)
-); # 5 subjects per series of n-of-1 trials
+); # 5 subjects per aggregated n-of-1 trials
 
 system.time(
   h10 <- dpill(boot10)
-); # 10 subjects per series of n-of-1 trials
+); # 10 subjects per aggregated n-of-1 trials
 
 system.time(
   h20 <- dpill(boot20)
-); # 20 subjects per series of n-of-1 trials
+); # 20 subjects per aggregated n-of-1 trials
 
 system.time(
   h100 <- dpill(boot100)
-); # 100 subjects per series of n-of-1 trials
+); # 100 subjects per aggregated n-of-1 trials
 
 system.time(
   h1000 <- dpill(boot1000)
-); # 1000 subjects per series of n-of-1 trials
+); # 1000 subjects per aggregated n-of-1 trials
 
 #######################################
 ### Compute local linear regression ###
@@ -325,55 +325,55 @@ system.time(
   fit1 <- locpoly(
     x=boot1, bandwidth=h1, range.x=xlim, truncate=TRUE
   )
-); # 1 subject per series of n-of-1 trials
+); # 1 subject per aggregated n-of-1 trials
 
 system.time(
   fit2 <- locpoly(
     x=boot2, bandwidth=h2, range.x=xlim, truncate=TRUE
   )
-); # 2 subjects per series of n-of-1 trials
+); # 2 subjects per aggregated n-of-1 trials
 
 system.time(
   fit3 <- locpoly(
     x=boot3, bandwidth=h3, range.x=xlim, truncate=TRUE
   )
-); # 3 subjects per series of n-of-1 trials
+); # 3 subjects per aggregated n-of-1 trials
 
 system.time(
   fit4 <- locpoly(
     x=boot4, bandwidth=h4, range.x=xlim, truncate=TRUE
   )
-); # 4 subjects per series of n-of-1 trials
+); # 4 subjects per aggregated n-of-1 trials
 
 system.time(
   fit5 <- locpoly(
     x=boot5, bandwidth=h5, range.x=xlim, truncate=TRUE
   )
-); # 5 subjects per series of n-of-1 trials
+); # 5 subjects per aggregated n-of-1 trials
 
 system.time(
   fit10 <- locpoly(
     x=boot10, bandwidth=h10, range.x=xlim, truncate=TRUE
   )
-); # 10 subjects per series of n-of-1 trials
+); # 10 subjects per aggregated n-of-1 trials
 
 system.time(
   fit20 <- locpoly(
     x=boot20, bandwidth=h20, range.x=xlim, truncate=TRUE
   )
-); # 20 subjects per series of n-of-1 trials
+); # 20 subjects per aggregated n-of-1 trials
 
 system.time(
   fit100 <- locpoly(
     x=boot100, bandwidth=h100, range.x=xlim, truncate=TRUE
   )
-); # 100 subjects per series of n-of-1 trials
+); # 100 subjects per aggregated n-of-1 trials
 
 system.time(
   fit1000 <- locpoly(
     x=boot1000, bandwidth=h1000, range.x=xlim, truncate=TRUE
   )
-); # 1000 subjects per series of n-of-1 trials
+); # 1000 subjects per aggregated n-of-1 trials
 
 ##########################
 ###### Plot results ######
@@ -414,7 +414,7 @@ plot(
   lwd=0.5,
   bty="n",
   axes=FALSE
-); # 1 subject per series of n-of-1 trials
+); # 1 subject per aggregated n-of-1 trials
 
 # define x-axis
 axis(
@@ -456,35 +456,35 @@ title(
 
 lines(
   fit2, col=color[2], lty=2, lwd=0.5
-); # 2 subjects per series of n-of-1 trials
+); # 2 subjects per aggregated n-of-1 trials
 
 lines(
   fit3, col=color[3], lty=3, lwd=0.5
-); # 3 subjects per series of n-of-1 trials
+); # 3 subjects per aggregated n-of-1 trials
 
 lines(
   fit4, col=color[4], lty=4, lwd=0.5
-); # 4 subjects per series of n-of-1 trials
+); # 4 subjects per aggregated n-of-1 trials
 
 lines(
   fit5, col=color[5], lty=5, lwd=0.5
-); # 5 subjects per series of n-of-1 trials
+); # 5 subjects per aggregated n-of-1 trials
 
 lines(
   fit10, col=color[6], lty=6, lwd=0.5
-); # 10 subjects per series of n-of-1 trials
+); # 10 subjects per aggregated n-of-1 trials
 
 lines(
   fit20, col=color[7], lty=7, lwd=0.5
-); # 20 subjects per series of n-of-1 trials
+); # 20 subjects per aggregated n-of-1 trials
 
 lines(
   fit100, col=color[8], lty=8, lwd=0.5
-); # 100 subjects per series of n-of-1 trials
+); # 100 subjects per aggregated n-of-1 trials
 
 lines(
   fit1000, col=color[9], lty=9, lwd=0.5
-); # 1000 subjects per series of n-of-1 trials
+); # 1000 subjects per aggregated n-of-1 trials
 
 legend(
   x="top",
