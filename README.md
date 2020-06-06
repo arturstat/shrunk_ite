@@ -1,5 +1,5 @@
 ﻿# shrunk_ite
-Data simulation from: Shrunk versus naive individual treatment effects in aggregated n-of-1 trials
+Shrunk versus naive individual treatment effects in aggregated n-of-1 trials
 
 ## Funding
 This work was supported by the European Union’s FP7 programme [grant number 602552] for the IDEAL project.
